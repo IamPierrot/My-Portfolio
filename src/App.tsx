@@ -1,8 +1,10 @@
+import MainWebsite from "./router";
+
 function App() {
   return (
-    <>
-      <div className="h-10 w-10 font-bold">HelloWorld</div>
-    </>
+    <body className="font-mono">
+      <MainWebsite></MainWebsite>
+    </body>
   );
 }
 

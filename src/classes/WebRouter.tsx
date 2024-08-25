@@ -10,11 +10,24 @@ export default class WebRouter {
     private Layout: Layout,
   ) {}
 
-  public static createWebRouter(path: string, content: React.FC, Layout: Layout) {
+  public static createWebRouter(
+    path: string,
+    content: React.FC,
+    Layout: Layout,
+  ) {
     this.webRouters.push(new WebRouter(path, content, Layout));
   }
 
-  public render() {
+  public static getRouters(): { path: string; name: string }[] {
+    return this.webRouters.map((r) => {
+      return {
+        path: r.path,
+        name: r.path.split("/").pop()!,
+      };
+    });
+  }
+
+  private render() {
     const ContentComponent = this.content;
     const LayoutComponent = this.Layout;
 
@@ -31,6 +44,6 @@ export default class WebRouter {
   }
 
   public static renderAllWebRouters() {
-    return this.webRouters.map(r => r.render());
+    return this.webRouters.map((r) => r.render());
   }
 }

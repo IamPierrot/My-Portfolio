@@ -6,7 +6,7 @@ import WebRouter from "../../classes/WebRouter";
 import { icon } from "../../router";
 import { useScroll } from "../../context";
 
-const Navigation = () => {
+const DefaultNavigation = () => {
   const [value, setValue] = useState("recents");
   const { isScrolled } = useScroll();
   const location = useLocation();
@@ -28,16 +28,16 @@ const Navigation = () => {
   const uniqueRoutes = useMemo(
     () =>
       Array.from(
-        new Set(WebRouter.getRouters().map((route) => route.name)),
+        new Set(WebRouter.getRouters().map((route) => route?.name)),
       ).map((name) =>
-        WebRouter.getRouters().find((route) => route.name === name),
+        WebRouter.getRouters().find((route) => route?.name === name),
       ),
     [],
   );
 
   return (
     <motion.nav
-      className={`${isScrolled ? "fixed" : "relative"} left-1/2 top-4 w-1/3 -translate-x-1/2 transform rounded-lg bg-black font-bold shadow-md`}
+      className={`${isScrolled ? "fixed" : "fixed"} left-1/2 top-4 z-10 w-1/3 -translate-x-1/2 transform rounded-lg bg-black font-bold shadow-md`}
       initial={{ opacity: 1, y: 0 }}
       animate={isScrolled ? { opacity: 0.75, y: 0 } : { opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -76,4 +76,4 @@ const Navigation = () => {
   );
 };
 
-export default memo(Navigation);
+export default memo(DefaultNavigation);

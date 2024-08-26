@@ -8,7 +8,9 @@ export default {
     extend: {},
   },
   plugins: [
-    require('@fortawesome/free-solid-svg-icons')
+    require('@fortawesome/free-solid-svg-icons'),
+    require('@fortawesome/free-brands-svg-icons'),
+    require('@fortawesome/react-fontawesome')
   ],
 }
 

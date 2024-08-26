@@ -6,7 +6,7 @@ const AnimatedRoutes: React.FC<React.PropsWithChildren> = ({ children }) => {
   const location = useLocation();
 
   return (
-    <AnimatePresence initial={false}>
+    <AnimatePresence initial={true}>
       <Routes location={location} key={location.key}>
         {children}
       </Routes>
@@ -17,4 +17,3 @@ const AnimatedRoutes: React.FC<React.PropsWithChildren> = ({ children }) => {
 export const RouterWithAnimation = () => {
   return <AnimatedRoutes>{WebRouter.renderAllWebRouters()}</AnimatedRoutes>;
 };
-

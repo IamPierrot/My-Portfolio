@@ -1,16 +1,20 @@
-import { Navigation, Footer } from "../../components";
+import { DefaultNavigation, Footer } from "../../components";
 import { ScrollProvider } from "../../context";
 import { Layout } from "../../types/Layout";
 
 const Mainlayout: Layout = ({ children }) => {
   return (
-    <>
-      <ScrollProvider>
-        <Navigation></Navigation>
-      </ScrollProvider>
-      <div className="h-full w-full">{children}</div>
-      <Footer></Footer>
-    </>
+    <section className="flex flex-col">
+      <div>
+        <ScrollProvider>
+          <DefaultNavigation></DefaultNavigation>
+        </ScrollProvider>
+      </div>
+      <div className="mt-16 flex min-h-screen flex-col">
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </div>
+    </section>
   );
 };
 

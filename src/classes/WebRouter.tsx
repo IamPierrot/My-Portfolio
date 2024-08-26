@@ -18,12 +18,13 @@ export default class WebRouter {
     this.webRouters.push(new WebRouter(path, content, Layout));
   }
 
-  public static getRouters(): { path: string; name: string }[] {
+  public static getRouters(): ({ path: string; name: string } | undefined)[] {
     return this.webRouters.map((r) => {
-      return {
-        path: r.path,
-        name: r.path.split("/").pop()!,
-      };
+      if (r.path.includes("/"))
+        return {
+          path: r.path,
+          name: r.path.split("/").pop()!,
+        };
     });
   }
 

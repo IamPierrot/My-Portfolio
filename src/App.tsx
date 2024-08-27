@@ -5,11 +5,11 @@ const MainWebsite = lazy(() => import("./router"));
 
 function App() {
   return (
-    <body className="font-mono">
+    <div className="font-mono">
       <Suspense fallback={<Loading />}>
         <MainWebsite></MainWebsite>
       </Suspense>
-    </body>
+    </div>
   );
 }
 

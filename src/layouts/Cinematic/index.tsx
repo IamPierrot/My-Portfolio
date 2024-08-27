@@ -3,10 +3,10 @@ import { Layout } from "../../types/Layout";
 
 const CinematicLayout: Layout = ({ children }) => {
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col bg-gradient-to-r from-cyan-500 to-blue-500">
       <SideBarNavigation />
       <div className="ml-10 mt-16 flex min-h-screen flex-col">
-        <main className="flex-grow">{children}</main>
+        <main className="mb-16 flex-grow">{children}</main>
         <Footer />
       </div>
     </section>

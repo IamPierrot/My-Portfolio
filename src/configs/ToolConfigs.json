@@ -1,0 +1,66 @@
+[
+    {
+        "name": "JavaScript",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+        "description": "",
+        "linkToLearn": "",
+        "mainColor": "#323330",
+        "badgeColor": "#F0DB4F"
+    },
+    {
+        "name": "TypeScript",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+        "description": "",
+        "linkToLearn": "",
+        "mainColor": "#3178C6",
+        "badgeColor": "#D5E4F3"
+    },
+    {
+        "name": "Python",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+        "description": "",
+        "linkToLearn": "",
+        "mainColor": "#306998",
+        "badgeColor": "#FFE873"
+    },
+    {
+        "name": "C",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg",
+        "description": "",
+        "linkToLearn": "",
+        "mainColor": "#5E97D0",
+        "badgeColor": "#D5E4F3"
+    },
+    {
+        "name": "CPP",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
+        "description": "",
+        "linkToLearn": "",
+        "mainColor": "#5E97D0",
+        "badgeColor": "#D5E4F3"
+    },
+    {
+        "name": "C#",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
+        "description": "",
+        "linkToLearn": "",
+        "mainColor": "#9B4F96",
+        "badgeColor": "#239120"
+    },
+    {
+        "name": "Kotlin",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg",
+        "description": "",
+        "linkToLearn": "",
+        "mainColor": "#7F52FF",
+        "badgeColor": "#FF6C02"
+    },
+    {
+        "name": "Java",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+        "description": "",
+        "linkToLearn": "",
+        "mainColor": "rgb(214 211 209)",
+        "badgeColor": "#FF6C02"
+    }
+]

@@ -4,7 +4,7 @@ import { Layout } from "../../types/Layout";
 
 const Mainlayout: Layout = ({ children }) => {
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col bg-[url('./assets/background.gif')] bg-center bg-no-repeat">
       <div>
         <ScrollProvider>
           <DefaultNavigation></DefaultNavigation>

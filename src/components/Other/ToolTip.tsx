@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, memo } from "react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -70,4 +70,4 @@ const Tooltip: React.FC<TooltipProps> = ({
   );
 };
 
-export default Tooltip;
+export default memo(Tooltip);

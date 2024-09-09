@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, memo } from "react";
 import clsx from "clsx";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface TooltipProps {
   children: React.ReactNode;
@@ -29,42 +28,39 @@ const Tooltip: React.FC<TooltipProps> = ({
       tooltipElement?.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
+
   return (
     <div className="relative" ref={tooltipRef}>
       {children}
       {open && (
-        <AnimatePresence>
-          <motion.div
+        <div
+          className={clsx(
+            "absolute z-50 rounded bg-gray-700 p-2 text-sm text-white",
+            placement === "top" &&
+              "bottom-full left-1/2 mb-2 -translate-x-1/2 transform",
+            placement === "bottom" &&
+              "left-1/2 top-full mt-2 -translate-x-1/2 transform",
+            placement === "left" &&
+              "right-full top-1/2 mr-2 -translate-y-1/2 transform",
+            placement === "right" &&
+              "left-full top-1/2 ml-2 -translate-y-1/2 transform",
+          )}
+        >
+          {title}
+          <div
             className={clsx(
-              "absolute z-50 rounded bg-gray-700 p-2 text-sm text-white",
+              "absolute z-50 h-3 w-3 rotate-45 transform bg-gray-700",
               placement === "top" &&
-                "bottom-full left-1/2 mb-2 -translate-x-1/2 transform",
+                "bottom-[-0.375rem] left-1/2 -translate-x-1/2 transform",
               placement === "bottom" &&
-                "left-1/2 top-full mt-2 -translate-x-1/2 transform",
+                "left-1/2 top-[-0.375rem] -translate-x-1/2 transform",
               placement === "left" &&
-                "right-full top-1/2 mr-2 -translate-y-1/2 transform",
+                "right-[-0.375rem] top-1/2 -translate-y-1/2 transform",
               placement === "right" &&
-                "left-full top-1/2 ml-2 -translate-y-1/2 transform",
+                "left-[-0.375rem] top-1/2 -translate-y-1/2 transform",
             )}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            {title}
-            <div
-              className={clsx(
-                "absolute z-50 h-3 w-3 rotate-45 transform bg-gray-700",
-                placement === "top" &&
-                  "bottom-[-0.375rem] left-1/2 -translate-x-1/2 transform",
-                placement === "bottom" &&
-                  "left-1/2 top-[-0.375rem] -translate-x-1/2 transform",
-                placement === "left" &&
-                  "right-[-0.375rem] top-1/2 -translate-y-1/2 transform",
-                placement === "right" &&
-                  "left-[-0.375rem] top-1/2 -translate-y-1/2 transform",
-              )}
-            />
-          </motion.div>
-        </AnimatePresence>
+          />
+        </div>
       )}
     </div>
   );

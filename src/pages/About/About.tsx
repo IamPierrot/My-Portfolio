@@ -1,6 +1,7 @@
 import { TabNavigation } from "../../components";
 import { Feature } from "./Features/Features";
 import { Skill } from "./ToolAndLanguage/Skill";
+import Projects from "./Projects/Project";
 
 const About = () => {
   const tabs = [
@@ -11,6 +12,10 @@ const About = () => {
     {
       label: "Skill",
       content: <Skill />,
+    },
+    {
+      label: "Projects",
+      content: <Projects />,
     },
   ];
 

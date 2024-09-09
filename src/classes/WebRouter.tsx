@@ -36,6 +36,7 @@ export default class WebRouter {
     return (
       <Route
         path={this.path}
+        key={this.path}
         element={
           <Suspense fallback={<Loading />}>
             <LayoutComponent>

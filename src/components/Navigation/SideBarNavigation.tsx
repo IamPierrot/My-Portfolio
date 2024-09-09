@@ -57,6 +57,7 @@ const SideBarNavigation = () => {
               !item?.path.endsWith("/") && (
                 <Tooltip
                   title={item.name.toLocaleUpperCase("en-es")}
+                  key={item.name}
                   placement="right"
                 >
                   <Link

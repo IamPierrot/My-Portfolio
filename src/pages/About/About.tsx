@@ -1,16 +1,16 @@
 import { TabNavigation } from "../../components";
-import { Feature } from "./Features";
-import { ToolAndLanguage } from "./Tool";
+import { Feature } from "./Features/Features";
+import { Skill } from "./ToolAndLanguage/Skill";
 
-export const About = () => {
+const About = () => {
   const tabs = [
     {
       label: "Features",
       content: <Feature />,
     },
     {
-      label: "Tools & Languages",
-      content: <ToolAndLanguage />,
+      label: "Skill",
+      content: <Skill />,
     },
   ];
 
@@ -20,3 +20,5 @@ export const About = () => {
     </section>
   );
 };
+
+export default About;

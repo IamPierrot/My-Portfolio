@@ -1,16 +1,37 @@
 import { BrowserRouter } from "react-router-dom";
 import { RouterWithAnimation } from "./router";
 import WebRouter from "../classes/WebRouter";
-import Home from "../pages/Home/Home";
 import { CinematicLayout, MainLayout } from "../layouts";
 import { faHome, faInfo } from "@fortawesome/free-solid-svg-icons";
-import { About } from "../pages/About/About";
-import NoPage from "../pages/Error/NotFound";
 
-WebRouter.createWebRouter("/home", Home, MainLayout);
-WebRouter.createWebRouter("/", Home, MainLayout);
-WebRouter.createWebRouter("/about", About, CinematicLayout);
-WebRouter.createWebRouter("*", NoPage, MainLayout);
+import { lazy, Suspense } from "react";
+import { Loading } from "../components";
+
+const routes = [
+  {
+    path: ["/home", "/"],
+    component: lazy(() => import("../pages/Home/Home")),
+    layout: MainLayout,
+  },
+  {
+    path: "/about",
+    component: lazy(() => import("../pages/About/About")),
+    layout: CinematicLayout,
+  },
+  {
+    path: "*",
+    component: lazy(() => import("../pages/Error/NotFound")),
+    layout: MainLayout,
+  },
+];
+
+routes.forEach(({ path, component, layout }) => {
+  if (Array.isArray(path)) {
+    path.forEach((p) => WebRouter.createWebRouter(p, component, layout));
+  } else {
+    WebRouter.createWebRouter(path, component, layout);
+  }
+});
 
 export const icon = {
   home: faHome,
@@ -20,7 +41,9 @@ export const icon = {
 export default function MainWebsite() {
   return (
     <BrowserRouter>
-      <RouterWithAnimation />
+      <Suspense fallback={<Loading />}>
+        <RouterWithAnimation />
+      </Suspense>
     </BrowserRouter>
   );
 }

@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Visual Studio Code",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+        "description": "A lightweight but powerful source code editor which runs on your desktop.",
+        "linkToLearn": "https://code.visualstudio.com/docs",
+        "main": true
+    },
+    {
+        "name": "Visual Studio",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg",
+        "description": "An integrated development environment (IDE) from Microsoft.",
+        "linkToLearn": "https://docs.microsoft.com/en-us/visualstudio/",
+        "main": false
+    },
+    {
+        "name": "Cursor",
+        "icon": "https://www.cursor.so/favicon.ico",
+        "description": "An AI-first code editor, designed to help developers write, edit, and understand code faster.",
+        "linkToLearn": "https://cursor.sh/",
+        "main": true
+    },
+    {
+        "name": "Git",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+        "description": "A distributed version control system for tracking changes in source code.",
+        "linkToLearn": "https://git-scm.com/doc",
+        "main": true
+    },
+    {
+        "name": "Docker",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+        "description": "A platform for developing, shipping, and running applications in containers.",
+        "linkToLearn": "https://docs.docker.com/",
+        "main": false
+    },
+    {
+        "name": "Jupyter Notebook",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original-wordmark.svg",
+        "description": "An open-source web application for creating and sharing documents containing live code.",
+        "linkToLearn": "https://jupyter.org/documentation",
+        "main": false
+    },
+    {
+        "name": "Postman",
+        "icon": "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
+        "description": "A collaboration platform for API development and testing.",
+        "linkToLearn": "https://learning.postman.com/docs/getting-started/introduction/",
+        "main": true
+    },
+    {
+        "name": "npm",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg",
+        "description": "A package manager for JavaScript, integral to many modern web development workflows.",
+        "linkToLearn": "https://docs.npmjs.com/",
+        "main": true
+    }
+]

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Layout } from "../types/Layout";
 import { Route } from "react-router";
+import { Loading } from "../components";
 
 export default class WebRouter {
   private static webRouters: WebRouter[] = [];
@@ -36,9 +37,11 @@ export default class WebRouter {
       <Route
         path={this.path}
         element={
-          <LayoutComponent>
-            <ContentComponent />
-          </LayoutComponent>
+          <Suspense fallback={<Loading />}>
+            <LayoutComponent>
+              <ContentComponent />
+            </LayoutComponent>
+          </Suspense>
         }
       />
     );

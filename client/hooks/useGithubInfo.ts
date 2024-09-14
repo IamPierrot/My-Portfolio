@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Octokit } from "octokit";
 import { RespositoryResponse, UserInfoResponse } from "../types/Response";
 
-const apiKey = "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";
+const apiKey = import.meta.env.TOKEN;
 
 const author = { name: "IamPierrot", token: apiKey };
 
@@ -22,7 +22,9 @@ export const useGithubRepos = () => {
           headers: {
             "X-GitHub-Api-Version": "2022-11-28",
           },
-          type: 'all'
+          type: 'all',
+          sort: 'pushed',
+          direction: 'desc'
         });
         const filteredRepos = response.data.filter((repo: RespositoryResponse) => !repo.fork);
         setResult(filteredRepos);

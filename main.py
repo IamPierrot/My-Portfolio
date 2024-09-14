@@ -30,7 +30,7 @@ def read_root():
 @app.get("/{full_path:path}")
 async def serve_react_app(full_path: str):
     try:
-        return FileResponse("dist/index.html")
+        return FileResponse(r"dist/index.html")
     except Exception:
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
@@ -42,7 +42,7 @@ async def http_exception_handler(request: Request, exc: Exception):
 
 @app.get("/error")
 async def error_page():
-    return FileResponse("dist/index.html")
+    return FileResponse(r"dist/index.html")
 
 
 @app.middleware("http")

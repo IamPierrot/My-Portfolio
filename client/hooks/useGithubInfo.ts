@@ -1,40 +1,72 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Octokit } from "octokit";
-import Response from "../types/Response";
+import { RespositoryResponse, UserInfoResponse } from "../types/Response";
 
 const apiKey = import.meta.env.TOKEN;
 
 const author = { name: "IamPierrot", token: apiKey };
 
-export const useGithubInfo = () => {
-  const [result, setResult] = useState<Response[]>();
-  const [loading, setLoading] = useState<boolean>(true);
+const octokit = new Octokit({ auth: author.token });
+
+export const useOctokitRequest = <T>(
+  route: string,
+  options?: Record<string, any>
+) => {
+  const [result, setResult] = useState<T | undefined>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const octokit = useMemo(() => new Octokit({ auth: author.token }), []);
-
-  const fetchGithubInfo = useCallback(async () => {
+  const fetchData = useCallback(async () => {
+    setIsLoading(true);
     try {
-      setLoading(true);
-      const response = await octokit.request("GET /users/{username}/repos", {
-        username: author.name,
-        headers: {
-          "X-GitHub-Api-Version": "2022-11-28",
-        },
-        per_page: 100,
-      });
-      setResult(response.data.filter((repo) => !repo.fork));
+      const response = await octokit.request(route, options);
+      setResult(response.data);
       setError(null);
     } catch (err) {
-      setError('Failed to fetch GitHub information');
+      setError(`Failed to fetch data: ${err}`);
+      console.error("Error fetching data:", err);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
-  }, [octokit]);
+  }, [route, options]);
 
   useEffect(() => {
-    fetchGithubInfo();
-  }, [fetchGithubInfo]);
+    fetchData();
+  }, [fetchData]);
 
-  return { result, loading, error };
+  return { result, isLoading, error };
+};
+
+export const useGithubRepos = () => {
+  const { result, error } = useOctokitRequest<RespositoryResponse[]>(
+    "GET /users/{username}/repos",
+    {
+      username: author.name,
+      headers: {
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+      per_page: 100,
+      type: 'all'
+    }
+  );
+
+  const filteredResult = useMemo(() => {
+    return result?.filter((repo) => !repo.fork) || [];
+  }, [result]);
+
+  return { result: filteredResult, error };
+};
+
+export const useGithubInfo = () => {
+  const { result, error } = useOctokitRequest<UserInfoResponse>(
+    "GET /users/{username}",
+    {
+      username: author.name,
+      headers: {
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+    }
+  );
+
+  return { result, error };
 };

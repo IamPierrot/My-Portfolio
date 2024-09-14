@@ -39,15 +39,15 @@ const Projects: React.FC = () => {
 
   const getLanguageColor = (language: string) => {
     const colors: { [key: string]: string } = {
-      JavaScript: "bg-yellow-100",
-      TypeScript: "bg-blue-100",
-      Python: "bg-green-100",
-      Java: "bg-red-100",
-      CSS: "bg-pink-100",
-      "C#": "bg-purple-100",
-      "C++": "bg-indigo-100",
+      JavaScript: "bg-yellow-800",
+      TypeScript: "bg-blue-800",
+      Python: "bg-green-800",
+      Java: "bg-red-800",
+      CSS: "bg-pink-800",
+      "C#": "bg-purple-800",
+      "C++": "bg-indigo-800",
     };
-    return colors[language] || "bg-gray-100";
+    return colors[language] || "bg-gray-800";
   };
 
   return (
@@ -55,34 +55,34 @@ const Projects: React.FC = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="flex flex-col">
+        <div className="flex flex-col text-white">
           <div className="overflow-x-auto">
             <div className="inline-block min-w-full align-middle">
-              <div className="relative mb-4 text-gray-500 focus-within:text-gray-900">
+              <div className="relative mb-4 text-gray-400 focus-within:text-gray-300">
                 <div className="mb-4 flex items-center justify-between">
-                  <div className="relative text-gray-500 focus-within:text-gray-900">
+                  <div className="relative text-gray-400 focus-within:text-gray-300">
                     <div className="pointer-events-none absolute inset-y-0 left-1 flex items-center pl-3">
                       <FontAwesomeIcon
                         icon={faSearch}
-                        className="text-gray-400"
+                        className="text-gray-500"
                       />
                     </div>
                     <input
                       type="text"
                       id="default-search"
-                      className="shadow-xs block h-11 w-80 rounded-full border border-gray-300 bg-transparent py-2.5 pl-12 pr-5 text-base font-normal text-gray-900 placeholder-gray-400 focus:outline-none"
+                      className="shadow-xs block h-11 w-80 rounded-full border border-gray-700 bg-gray-800 py-2.5 pl-12 pr-5 text-base font-normal text-white placeholder-gray-500 focus:outline-none"
                       placeholder="Search for repository"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                     />
                   </div>
-                  <div className="rounded-lg bg-gray-100 p-4 text-right">
-                    <p className="text-sm font-semibold text-gray-700">
+                  <div className="rounded-lg bg-gray-800 p-4 text-right">
+                    <p className="text-sm font-semibold text-gray-300">
                       Total Public Repos:{" "}
                       {filteredResult?.filter((repo) => !repo.private).length ||
                         0}
                     </p>
-                    <p className="text-sm font-semibold text-gray-700">
+                    <p className="text-sm font-semibold text-gray-300">
                       Most Used Language:{" "}
                       {filteredResult
                         ? Object.entries(
@@ -106,51 +106,51 @@ const Projects: React.FC = () => {
                 <div className="overflow-hidden">
                   <table className="min-w-full table-fixed overflow-hidden rounded-xl">
                     <thead>
-                      <tr className="bg-gray-50">
+                      <tr className="bg-gray-800">
                         <th
                           scope="col"
-                          className="w-1/4 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-900"
+                          className="w-1/4 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-300"
                         >
                           Repository
                         </th>
                         <th
                           scope="col"
-                          className="w-1/5 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-900"
+                          className="w-1/5 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-300"
                         >
                           Owner
                         </th>
                         <th
                           scope="col"
-                          className="w-1/6 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-900"
+                          className="w-1/6 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-300"
                         >
                           Stars
                         </th>
                         <th
                           scope="col"
-                          className="w-1/6 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-900"
+                          className="w-1/6 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-300"
                         >
                           Language
                         </th>
                         <th
                           scope="col"
-                          className="w-1/5 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-900"
+                          className="w-1/5 p-5 text-left text-sm font-semibold capitalize leading-6 text-gray-300"
                         >
                           Last Commit
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-300">
+                    <tbody className="divide-y divide-gray-700">
                       {filteredResult
                         ?.filter((repo) => !repo.private)
                         .map((repo, index) => (
                           <motion.tr
                             key={repo.id}
-                            className={`transition-all duration-500 hover:bg-gray-50 ${getLanguageColor(repo.language || "")}`}
+                            className={`transition-all duration-500 hover:bg-gray-800 ${getLanguageColor(repo.language || "")}`}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3, delay: index * 0.1 }}
                           >
-                            <td className="truncate p-5 text-sm font-bold leading-6 text-gray-900">
+                            <td className="truncate p-5 text-sm font-bold leading-6 text-gray-300">
                               <a
                                 href={repo.html_url}
                                 target="_blank"
@@ -160,20 +160,20 @@ const Projects: React.FC = () => {
                                 {repo.name}
                               </a>
                             </td>
-                            <td className="truncate p-5 text-sm font-medium leading-6 text-gray-900">
+                            <td className="truncate p-5 text-sm font-medium leading-6 text-gray-300">
                               {repo.owner.login}
                             </td>
-                            <td className="truncate p-5 text-sm font-medium leading-6 text-gray-900">
+                            <td className="truncate p-5 text-sm font-medium leading-6 text-gray-300">
                               <FontAwesomeIcon
                                 icon={faStar}
-                                className="mr-1 text-yellow-400"
+                                className="mr-1 text-yellow-500"
                               />
                               {repo.stargazers_count}
                             </td>
-                            <td className="truncate p-5 text-sm font-medium leading-6 text-gray-900">
+                            <td className="truncate p-5 text-sm font-medium leading-6 text-gray-300">
                               {repo.language || "N/A"}
                             </td>
-                            <td className="truncate p-5 text-sm font-medium leading-6 text-gray-900">
+                            <td className="truncate p-5 text-sm font-medium leading-6 text-gray-300">
                               {formatLastCommitTime(repo.pushed_at || "")}
                             </td>
                           </motion.tr>

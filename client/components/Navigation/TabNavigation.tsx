@@ -9,9 +9,10 @@ type Tab = {
 type TabsProps = {
   tabs: Tab[];
   initialTabIndex?: number;
+  theme?: "dark" | "light";
 };
 
-const Tabs = ({ tabs, initialTabIndex = 0 }: TabsProps) => {
+const Tabs = ({ tabs, initialTabIndex = 0, theme = "light" }: TabsProps) => {
   const [activeTabIndex, setActiveTabIndex] = useState(initialTabIndex);
   const [underlineProps, setUnderlineProps] = useState({
     width: 0,
@@ -60,17 +61,39 @@ const Tabs = ({ tabs, initialTabIndex = 0 }: TabsProps) => {
     return isLeftHalf ? 1 : -1;
   }, []);
 
+  const themeClasses = {
+    dark: {
+      nav: "border-gray-700",
+      activeTab: "text-blue-400",
+      inactiveTab: "text-gray-400 hover:text-blue-400",
+      underline: "bg-blue-400",
+      content: "bg-gray-700 text-white",
+    },
+    light: {
+      nav: "border-gray-300",
+      activeTab: "text-blue-600",
+      inactiveTab: "text-gray-600 hover:text-blue-600",
+      underline: "bg-blue-600",
+      content: "bg-gray-100 text-black",
+    },
+  };
+
+  const currentTheme = themeClasses[theme];
+
   return (
     <>
-      <nav ref={tabsContainerRef} className="relative flex flex-wrap justify-center border-b border-gray-300 md:justify-start">
+      <nav
+        ref={tabsContainerRef}
+        className={`relative flex flex-wrap justify-center border-b ${currentTheme.nav} md:justify-start`}
+      >
         {tabs.map((tab, index) => (
           <button
             key={index}
             ref={(el) => (tabRefs.current[index] = el)}
             className={`relative z-10 px-4 py-2 text-sm font-medium transition-all duration-300 focus:outline-none ${
               index === activeTabIndex
-                ? "text-blue-600"
-                : "text-gray-600 hover:text-blue-600"
+                ? currentTheme.activeTab
+                : currentTheme.inactiveTab
             }`}
             onClick={() => {
               setActiveTabIndex(index);
@@ -81,24 +104,34 @@ const Tabs = ({ tabs, initialTabIndex = 0 }: TabsProps) => {
           </button>
         ))}
         <motion.div
-          className="absolute bottom-0 h-0.5 bg-blue-600"
+          className={`absolute bottom-0 h-0.5 ${currentTheme.underline}`}
           initial={false}
           animate={{ width: underlineProps.width, left: underlineProps.left }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         />
       </nav>
-      <div className="mt-4 rounded-lg bg-gray-100 p-4 overflow-hidden">
+      <div
+        className={`mt-4 rounded-lg ${currentTheme.content} overflow-hidden p-4`}
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTabIndex}
-            initial={{ opacity: 0, x: 20 * getAnimationDirection(activeTabIndex), height: 'auto' }}
-            animate={{ opacity: 1, x: 0, height: 'auto' }}
-            exit={{ opacity: 0, x: -20 * getAnimationDirection(activeTabIndex), height: 'auto' }}
+            initial={{
+              opacity: 0,
+              x: 20 * getAnimationDirection(activeTabIndex),
+              height: "auto",
+            }}
+            animate={{ opacity: 1, x: 0, height: "auto" }}
+            exit={{
+              opacity: 0,
+              x: -20 * getAnimationDirection(activeTabIndex),
+              height: "auto",
+            }}
             transition={{
               type: "spring",
               stiffness: 300,
               damping: 30,
-              duration: 0.5
+              duration: 0.5,
             }}
           >
             <motion.div

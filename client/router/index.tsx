@@ -23,6 +23,11 @@ const routes = [
     component: lazy(() => import("../pages/Error/NotFound")),
     layout: MainLayout,
   },
+  {
+    path: "/error",
+    component: lazy(() => import("../pages/Error/InternalError")),
+    layout: MainLayout,
+  },
 ];
 
 routes.forEach(({ path, component, layout }) => {

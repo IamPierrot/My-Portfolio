@@ -20,8 +20,8 @@ const About = () => {
   ];
 
   return (
-    <section className="container mx-auto flex flex-col space-y-6 rounded-lg bg-slate-50 px-4 py-8 md:py-12 lg:py-20">
-      <TabNavigation tabs={tabs} />
+    <section className="container mx-auto flex flex-col space-y-6 rounded-lg bg-gray-900 px-4 py-8 text-white md:py-12 lg:py-20">
+      <TabNavigation tabs={tabs} theme="dark" />
     </section>
   );
 };

@@ -52,9 +52,9 @@ export const Language = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <h2 className="relative mb-6 w-1/4 border-b-2 border-black pb-2 text-center text-4xl font-bold tracking-tight text-black">
-        <span className="text-black">Languages</span>
+    <div className="container mx-auto text-white">
+      <h2 className="relative mb-6 w-1/4 border-b-2 border-white pb-2 text-center text-4xl font-bold tracking-tight text-white">
+        <span className="text-white">Languages</span>
       </h2>
       <motion.ul
         ref={ref}
@@ -67,7 +67,7 @@ export const Language = () => {
           <motion.li
             key={value.name}
             variants={itemVariants}
-            className="group relative flex cursor-pointer flex-col overflow-hidden rounded-lg bg-white shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            className="group relative flex cursor-pointer flex-col overflow-hidden rounded-lg bg-gray-800 shadow-xl ring-1 ring-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
           >
             <div className="relative z-10 flex-grow p-6">
               <span
@@ -96,7 +96,7 @@ export const Language = () => {
                 </h3>
               </div>
               <div className="mt-4 space-y-4">
-                <p className="text-sm text-gray-600">{value.description}</p>
+                <p className="text-sm text-gray-300">{value.description}</p>
               </div>
             </div>
             <div className="relative z-10 mt-auto flex items-center justify-between p-4">

@@ -52,9 +52,9 @@ export const Tool = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <h2 className="relative w-1/4 border-b-2 border-black pb-2 text-center text-4xl font-bold tracking-tight text-black">
-        <span className="text-black">Tools</span>
+    <div className="container mx-auto text-white">
+      <h2 className="relative w-1/4 border-b-2 border-white pb-2 text-center text-4xl font-bold tracking-tight text-white">
+        <span className="text-white">Tools</span>
       </h2>
       <motion.div
         ref={ref}
@@ -67,9 +67,9 @@ export const Tool = () => {
           <motion.div
             key={tool.name}
             variants={itemVariants}
-            className="relative col-span-4 flex flex-col items-center justify-start rounded-xl border-2 border-gray-300 bg-gray-800 px-5 pb-2 pt-10 text-gray-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-yellow-400/50 sm:col-span-2 lg:col-span-1"
+            className="relative col-span-4 flex flex-col items-center justify-start rounded-xl border-2 border-gray-700 bg-gray-800 px-5 pb-2 pt-10 text-gray-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-yellow-400/50 sm:col-span-2 lg:col-span-1"
           >
-            <span className="absolute -top-6 rounded-full border-2 border-gray-300 bg-slate-100 p-3 transition-transform duration-300 group-hover:scale-110">
+            <span className="absolute -top-6 rounded-full border-2 border-gray-700 bg-white p-3 transition-transform duration-300 group-hover:scale-110">
               <span
                 className="grid h-10 w-10 place-items-center rounded-full bg-contain bg-center"
                 style={{ backgroundImage: `url('${tool.icon}')` }}

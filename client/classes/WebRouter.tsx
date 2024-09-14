@@ -21,7 +21,7 @@ export default class WebRouter {
 
   public static getRouters(): ({ path: string; name: string } | undefined)[] {
     return this.webRouters.map((r) => {
-      if (r.path.includes("/"))
+      if (r.path.includes("/") && !r.path.includes("error"))
         return {
           path: r.path,
           name: r.path.split("/").pop()!,

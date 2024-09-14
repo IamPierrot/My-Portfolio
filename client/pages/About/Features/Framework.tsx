@@ -50,7 +50,7 @@ export const FrameWork = () => {
 
   return (
     <div className="container mx-auto">
-      <hr className="relative mt-10 w-full opacity-65" />
+      <hr className="relative mt-10 w-full border-gray-700 opacity-65" />
       <motion.div
         ref={ref}
         initial="hidden"
@@ -62,11 +62,11 @@ export const FrameWork = () => {
           <motion.div
             key={framework.name}
             variants={itemVariants}
-            className="overflow-hidden rounded-xl bg-white shadow-md"
+            className="overflow-hidden rounded-xl bg-slate-800 shadow-md"
           >
             <div className="relative">
               <img
-                className="h-48 w-full object-cover object-center"
+                className="h-48 w-full bg-slate-100 object-cover object-center"
                 src={framework.image}
                 alt={framework.name}
               />
@@ -87,7 +87,7 @@ export const FrameWork = () => {
                         New
                       </div>
                     )}
-                    <div className="absolute bottom-0 right-0 m-2 rounded-md bg-gray-800 px-2 py-1 text-xs text-white">
+                    <div className="absolute bottom-0 right-0 m-2 rounded-md bg-gray-700 px-2 py-1 text-xs text-white">
                       {`${Math.round(learnedDays)} days learned`}
                     </div>
                   </>
@@ -95,10 +95,10 @@ export const FrameWork = () => {
               })()}
             </div>
             <div className="p-4">
-              <div className="mb-2 text-lg font-medium text-gray-800">
+              <div className="mb-2 text-lg font-medium text-white">
                 {framework.name}
               </div>
-              <p className="text-sm text-gray-500">{framework.description}</p>
+              <p className="text-sm text-gray-400">{framework.description}</p>
             </div>
           </motion.div>
         ))}

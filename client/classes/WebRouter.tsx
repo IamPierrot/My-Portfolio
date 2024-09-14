@@ -15,10 +15,12 @@ export default class WebRouter {
   public static createWebRouter(
     path: string,
     content: React.FC,
-      Layout: Layout,
+    Layout: Layout,
     notShowInSideBar: boolean = false,
   ) {
-    this.webRouters.push(new WebRouter(path, content, Layout, notShowInSideBar));
+    this.webRouters.push(
+      new WebRouter(path, content, Layout, notShowInSideBar),
+    );
   }
 
   public static getRouters(): ({ path: string; name: string } | undefined)[] {

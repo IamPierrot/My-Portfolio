@@ -25,3 +25,5 @@ __pycache__
 *.sw?
 *.env
 *.venv
+
+src/vite-env.d.ts

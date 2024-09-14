@@ -9,19 +9,21 @@ export default class WebRouter {
     private path: string,
     private content: React.FC,
     private Layout: Layout,
+    private notShowInSideBar: boolean = false,
   ) {}
 
   public static createWebRouter(
     path: string,
     content: React.FC,
-    Layout: Layout,
+      Layout: Layout,
+    notShowInSideBar: boolean = false,
   ) {
-    this.webRouters.push(new WebRouter(path, content, Layout));
+    this.webRouters.push(new WebRouter(path, content, Layout, notShowInSideBar));
   }
 
   public static getRouters(): ({ path: string; name: string } | undefined)[] {
     return this.webRouters.map((r) => {
-      if (r.path.includes("/") && !r.path.includes("error"))
+      if (r.path.includes("/") && !r.notShowInSideBar)
         return {
           path: r.path,
           name: r.path.split("/").pop()!,

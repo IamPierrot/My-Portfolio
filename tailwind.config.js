@@ -2,11 +2,15 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./client/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@fortawesome/free-solid-svg-icons'),
+    require('@fortawesome/free-brands-svg-icons'),
+    require('@fortawesome/react-fontawesome')
+  ],
 }
 

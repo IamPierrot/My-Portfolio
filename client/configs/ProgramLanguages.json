@@ -1,0 +1,78 @@
+[
+    {
+        "name": "JavaScript",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+        "description": "A versatile language for web development, both client-side and server-side.",
+        "linkToLearn": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        "mainColor": "#F7DF1E",
+        "badgeColor": "#323330",
+        "main": true
+    },
+    {
+        "name": "TypeScript",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+        "description": "A typed superset of JavaScript that compiles to plain JavaScript.",
+        "linkToLearn": "https://www.typescriptlang.org/docs/",
+        "mainColor": "#3178C6",
+        "badgeColor": "#E8E8E8",
+        "main": true
+    },
+    {
+        "name": "Python",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+        "description": "A high-level language known for its simplicity and versatility.",
+        "linkToLearn": "https://docs.python.org/3/tutorial/",
+        "mainColor": "#3776AB",
+        "badgeColor": "#FFD43B",
+        "main": true
+    },
+    {
+        "name": "C",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg",
+        "description": "A powerful low-level language with high performance.",
+        "linkToLearn": "https://devdocs.io/c/",
+        "mainColor": "#A8B9CC",
+        "badgeColor": "#03599C"
+    },
+    {
+        "name": "C++",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
+        "description": "An extension of C with object-oriented features.",
+        "linkToLearn": "https://www.learncpp.com/",
+        "mainColor": "#00599C",
+        "badgeColor": "#004482"
+    },
+    {
+        "name": "C#",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
+        "description": "A versatile language for building Windows and web applications.",
+        "linkToLearn": "https://docs.microsoft.com/en-us/dotnet/csharp/",
+        "mainColor": "#239120",
+        "badgeColor": "#1C7D12"
+    },
+    {
+        "name": "Kotlin",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg",
+        "description": "A modern language that makes developers happier, especially for Android.",
+        "linkToLearn": "https://kotlinlang.org/docs/tutorials/",
+        "mainColor": "#7F52FF",
+        "badgeColor": "#E44857"
+    },
+    {
+        "name": "Java",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+        "description": "A popular language for building large-scale enterprise applications.",
+        "linkToLearn": "https://docs.oracle.com/javase/tutorial/",
+        "mainColor": "#007396",
+        "badgeColor": "#ED8B00"
+    },
+    {
+        "name": "Mojo",
+        "icon": "https://forums.fast.ai/uploads/default/optimized/3X/b/2/b2a6872bebe245dba66865fe4931016cfdc673e5_2_500x500.png",
+        "description": "A new programming language that combines Python's ease of use with C's performance.",
+        "linkToLearn": "https://www.modular.com/mojo",
+        "mainColor": "#FF5A00",
+        "badgeColor": "#000000",
+        "main": false
+    }
+]

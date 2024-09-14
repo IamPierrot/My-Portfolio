@@ -10,12 +10,12 @@ import { Loading } from "../components";
 const routes = [
   {
     path: ["/home", "/"],
-    component: lazy(() => import("../pages/Home/Home")),
+    component: lazy(() => import("../pages/Home")),
     layout: MainLayout,
   },
   {
     path: "/about",
-    component: lazy(() => import("../pages/About/About")),
+    component: lazy(() => import("../pages/About")),
     layout: CinematicLayout,
   },
   {
@@ -29,6 +29,11 @@ const routes = [
     component: lazy(() => import("../pages/Error/InternalError")),
     layout: MainLayout,
     notShowInSideBar: true,
+  },
+  {
+    path: "/resume",
+    component: lazy(() => import("../pages/Resume")),
+    layout: CinematicLayout,
   },
 ];
 

@@ -3,9 +3,10 @@ import { useGithubRepos } from "../../../hooks/useGithubInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faStar } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { BlockLoading } from "../../../components";
 
 const Projects: React.FC = () => {
-  const { result } = useGithubRepos();
+  const { result, isLoading } = useGithubRepos();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredResult, setFilteredResult] = useState(result);
 
@@ -48,6 +49,8 @@ const Projects: React.FC = () => {
     };
     return colors[language] || "bg-gray-800";
   };
+
+  if (isLoading) return <BlockLoading />;
 
   return (
     <>

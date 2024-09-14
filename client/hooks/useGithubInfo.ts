@@ -1,72 +1,74 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Octokit } from "octokit";
 import { RespositoryResponse, UserInfoResponse } from "../types/Response";
 
-const apiKey = import.meta.env.TOKEN;
+const apiKey = "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";
 
 const author = { name: "IamPierrot", token: apiKey };
 
-const octokit = new Octokit({ auth: author.token });
+const octokit = new Octokit({ auth: author.token, request: { timeout: 10000 } });
 
-export const useOctokitRequest = <T>(
-  route: string,
-  options?: Record<string, any>
-) => {
-  const [result, setResult] = useState<T | undefined>();
+export const useGithubRepos = () => {
+  const [result, setResult] = useState<RespositoryResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const response = await octokit.request(route, options);
-      setResult(response.data);
-      setError(null);
-    } catch (err) {
-      setError(`Failed to fetch data: ${err}`);
-      console.error("Error fetching data:", err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [route, options]);
-
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    const fetchRepos = async () => {
+      setIsLoading(true);
+      try {
+        const response = await octokit.request("GET /users/{username}/repos", {
+          username: author.name,
+          headers: {
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+          type: 'all'
+        });
+        const filteredRepos = response.data.filter((repo: RespositoryResponse) => !repo.fork);
+        setResult(filteredRepos);
+        setError(null);
+      } catch (err) {
+        setError(`Failed to fetch repositories: ${err}`);
+        console.error("Error fetching repositories:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRepos();
+  }, []);
 
   return { result, isLoading, error };
 };
 
-export const useGithubRepos = () => {
-  const { result, error } = useOctokitRequest<RespositoryResponse[]>(
-    "GET /users/{username}/repos",
-    {
-      username: author.name,
-      headers: {
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-      per_page: 100,
-      type: 'all'
-    }
-  );
-
-  const filteredResult = useMemo(() => {
-    return result?.filter((repo) => !repo.fork) || [];
-  }, [result]);
-
-  return { result: filteredResult, error };
-};
-
 export const useGithubInfo = () => {
-  const { result, error } = useOctokitRequest<UserInfoResponse>(
-    "GET /users/{username}",
-    {
-      username: author.name,
-      headers: {
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    }
-  );
+  const [result, setResult] = useState<UserInfoResponse | undefined>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  return { result, error };
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      setIsLoading(true);
+      try {
+        const response = await octokit.request("GET /users/{username}", {
+          username: author.name,
+          headers: {
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+        });
+        console.log(response.data);
+        setResult(response.data as UserInfoResponse);
+        setError(null);
+      } catch (err) {
+        setError(`Failed to fetch user info: ${err}`);
+        console.error("Error fetching user info:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
+
+  return { result, isLoading, error };
 };

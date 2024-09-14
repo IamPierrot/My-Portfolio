@@ -10,6 +10,7 @@ import {
 import { faCodeFork, faUsers, faBook } from "@fortawesome/free-solid-svg-icons";
 import ToolTip from "../../components/Other/ToolTip";
 import { useGithubInfo } from "../../hooks/useGithubInfo";
+import { Loading } from "../../components";
 
 const userInfo = {
   name: "Pierrot",
@@ -23,8 +24,8 @@ const userInfo = {
 };
 
 const Home = () => {
-  const { result: githubInfo } = useGithubInfo();
-
+  const { result: githubInfo, isLoading } = useGithubInfo();
+  if (isLoading) return <Loading />;
   return (
     <>
       <motion.div
@@ -94,48 +95,71 @@ const Home = () => {
           </div>
         </ToolTip>
       </motion.div>
-      <div className="mb-7 mt-2 flex flex-wrap items-center justify-center gap-4">
-        <a
-          href={userInfo.gitHubUrl}
-          className="flex h-20 w-40 flex-col items-center justify-center rounded-md border border-dashed border-gray-200 bg-white transition-colors duration-100 ease-in-out hover:border-gray-400/80"
-        >
-          <div className="flex flex-row items-center justify-center">
-            <FontAwesomeIcon icon={faBook} className="mr-3 text-gray-500/95" />
-            <span className="font-bold text-gray-600">
-              {githubInfo?.public_repos || 0}
-            </span>
-          </div>
-          <div className="mt-2 text-sm text-gray-400">Public Repos</div>
-        </a>
-
-        <a
-          href={userInfo.gitHubUrl}
-          className="flex h-20 w-40 flex-col items-center justify-center rounded-md border border-dashed border-gray-200 bg-white transition-colors duration-100 ease-in-out hover:border-gray-400/80"
-        >
-          <div className="flex flex-row items-center justify-center">
-            <FontAwesomeIcon
-              icon={faCodeFork}
-              className="mr-3 text-gray-500/95"
-            />
-            <span className="font-bold text-gray-600">
-              {githubInfo?.followers || 0}
-            </span>
-          </div>
-          <div className="mt-2 text-sm text-gray-400">Followers</div>
-        </a>
-
-        <a
-          href={userInfo.gitHubUrl}
-          className="flex h-20 w-40 flex-col items-center justify-center rounded-md border border-dashed border-gray-200 bg-white transition-colors duration-100 ease-in-out hover:border-gray-400/80"
-        >
-          <div className="flex flex-row items-center justify-center">
-            <FontAwesomeIcon icon={faUsers} className="mr-3 text-gray-500/95" />
-            <span className="font-bold text-gray-600">
-              {githubInfo?.following || 0}
-            </span>
-          </div>
-          <div className="mt-2 text-sm text-gray-400">Following</div>
-        </a>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.1,
+            },
+          },
+        }}
+        className="mb-7 mt-2 flex flex-wrap items-center justify-center gap-4"
+      >
+        {[
+          {
+            icon: faBook,
+            label: "All Repositories",
+            value:
+              (githubInfo?.public_repos || 0) +
+              (githubInfo?.owned_private_repos || 0),
+          },
+          {
+            icon: faCodeFork,
+            label: "Followers",
+            value: githubInfo?.followers || 0,
+          },
+          {
+            icon: faUsers,
+            label: "Following",
+            value: githubInfo?.following || 0,
+          },
+        ].map((item, index) => (
+          <motion.a
+            key={index}
+            href={userInfo.gitHubUrl}
+            variants={{
+              hidden: { y: 20, opacity: 0 },
+              visible: {
+                y: 0,
+                opacity: 1,
+              },
+            }}
+            className="group relative flex h-20 w-40 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-md border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div className="relative z-10 flex flex-col items-center justify-center">
+              <div className="flex flex-row items-center justify-center">
+                <FontAwesomeIcon
+                  icon={item.icon}
+                  className="mr-3 text-gray-500 transition-transform duration-300 group-hover:-rotate-12"
+                />
+                <span className="font-bold text-gray-600">{item.value}</span>
+              </div>
+              <div className="mt-2 text-sm text-gray-400">{item.label}</div>
+            </div>
+            <span className="absolute inset-0 z-0 bg-slate-400 opacity-0 transition-opacity duration-300 group-hover:opacity-30"></span>
+          </motion.a>
+        ))}
+      </motion.div>
+      <div className="mb-10 flex h-full flex-col items-center justify-center">
+        <div className="text-center">
+          <p className="rounded-lg bg-gray-800 p-4 text-lg font-semibold italic text-white">
+            {githubInfo?.bio}
+          </p>
+        </div>
       </div>
     </>
   );

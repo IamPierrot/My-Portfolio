@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Octokit } from "octokit";
 import { RespositoryResponse, UserInfoResponse } from "../types/Response";
+import config from '../config';
 
-const apiKey = import.meta.env.TOKEN;
+const apiKey = config.GITHUB_TOKEN;
 
 const author = { name: "IamPierrot", token: apiKey };
 
@@ -58,7 +59,6 @@ export const useGithubInfo = () => {
             "X-GitHub-Api-Version": "2022-11-28",
           },
         });
-        console.log(response.data);
         setResult(response.data as UserInfoResponse);
         setError(null);
       } catch (err) {

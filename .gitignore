@@ -26,4 +26,5 @@ __pycache__
 *.env
 *.venv
 
+package-lock.json
 src/vite-env.d.ts

@@ -21,12 +21,11 @@ class Limiter:
         if client_id not in self.clients:
             self.clients[client_id] = deque()
 
-        # Remove expired timestamps
         while self.clients[client_id] and now - self.clients[client_id][0] > self.per:
             self.clients[client_id].popleft()
 
         if len(self.clients[client_id]) >= self.rate:
-            logger.warn(f"[{client_id}] sent too many requests!")
+            logger.warning(f"[{client_id}] sent too many requests!")
             return False
 
         self.clients[client_id].append(now)

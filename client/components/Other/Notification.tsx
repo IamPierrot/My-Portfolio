@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface NotificationProps {
@@ -9,7 +9,7 @@ interface NotificationProps {
   type?: "success" | "error";
 }
 
-export default function Notification({
+export default memo(function Notification({
   open,
   onClose,
   title,
@@ -99,4 +99,4 @@ export default function Notification({
       )}
     </AnimatePresence>
   );
-}
+});

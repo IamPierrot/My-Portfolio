@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import Notification from "../components/Other/Notification";
 import { NotificationContext } from "../hooks";
 
@@ -20,11 +20,13 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({
     [notification],
   );
 
+  const memoizedNotification = useMemo(() => ({ ...notification }), [notification]);
+
   return (
     <NotificationContext.Provider value={{ showNotification }}>
       {children}
       <Notification
-        {...notification}
+        {...memoizedNotification}
         onClose={() => setNotification({ ...notification, open: false })}
       />
     </NotificationContext.Provider>

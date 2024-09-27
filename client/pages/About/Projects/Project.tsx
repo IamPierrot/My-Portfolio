@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useGithubRepos } from "../../../hooks/useGithubInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faStar } from "@fortawesome/free-solid-svg-icons";
@@ -38,7 +38,7 @@ const Projects: React.FC = () => {
     return `${Math.floor(diffInSeconds / 31536000)} years ago`;
   };
 
-  const getLanguageColor = (language: string) => {
+  const getLanguageColor = useCallback((language: string) => {
     const colors: { [key: string]: string } = {
       JavaScript: "bg-yellow-600",
       TypeScript: "bg-blue-600",
@@ -49,7 +49,7 @@ const Projects: React.FC = () => {
       "C++": "bg-indigo-600",
     };
     return colors[language] || "bg-gray-600";
-  };
+  }, []);
 
   if (isLoading) return <BlockLoading />;
 

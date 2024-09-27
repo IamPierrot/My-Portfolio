@@ -37,12 +37,14 @@ const DefaultNavigation = () => {
 
   return (
     <motion.nav
-      className={`${isScrolled ? "fixed" : "fixed"} left-1/2 top-4 z-10 w-1/3 -translate-x-1/2 transform rounded-lg bg-black font-bold shadow-md`}
+      className={`${
+        isScrolled ? "fixed" : "fixed"
+      } left-1/2 top-4 z-10 w-1/2 max-w-md -translate-x-1/2 transform rounded-lg bg-black font-bold shadow-lg`}
       initial={{ opacity: 1, y: 0 }}
       animate={isScrolled ? { opacity: 0.75, y: 0 } : { opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
-      <div className="flex justify-around py-3">
+      <div className="flex flex-row justify-around gap-4 py-3 md:gap-0">
         {uniqueRoutes.map(
           (item) =>
             item &&
@@ -52,10 +54,12 @@ const DefaultNavigation = () => {
                 className={`flex flex-col items-center ${getLinkClass(item.name)}`}
                 to={item.path}
               >
-                <FontAwesomeIcon
-                  icon={icon[item.name as keyof object]}
-                  size="lg"
-                />
+                <motion.div whileHover={{ scale: 1.2 }} className="mb-1">
+                  <FontAwesomeIcon
+                    icon={icon[item.name as keyof object]}
+                    size="lg"
+                  />
+                </motion.div>
                 <motion.span
                   className="text-xs"
                   initial={false}

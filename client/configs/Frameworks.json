@@ -1,37 +1,37 @@
 [
     {
         "name": "FastAPI",
-        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg",
+        "image": "https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/fastapi/fastapi-original.svg",
         "description": "Modern, fast (high-performance), web framework for building APIs with Python",
         "learnTime": 0.5
     },
     {
         "name": "React",
-        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+        "image": "https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/react/react-original.svg",
         "description": "A JavaScript library for building user interfaces",
         "learnTime": 1
     },
     {
         "name": "Discord.js",
-        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/discordjs/discordjs-original.svg",
+        "image": "https://styles.redditmedia.com/t5_3eu72/styles/communityIcon_0oiai0ziio0b1.jpg?format=pjpg&s=780ac1421c40783596a47874004d3e7ba2eee5bc",
         "description": "A powerful JavaScript library for interacting with the Discord API",
         "learnTime": 1
     },
     {
         "name": "JDA",
-        "image": "https://th.bing.com/th/id/OIP.fvCiL4MeGixRP0X4Jh8FRwAAAA?w=256&h=256&rs=1&pid=ImgDetMain",
+        "image": "https://raw.githubusercontent.com/discord-jda/JDA/refs/heads/assets/assets/readme/logo.png",
         "description": "Java Discord API, a Java wrapper for the Discord API",
         "learnTime": 0.25
     },
     {
         "name": "Django",
-        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg",
+        "image": "https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/django/django-plain-wordmark.svg",
         "description": "A high-level Python Web framework that encourages rapid development",
         "learnTime": 0.14
     },
     {
         "name": "PyTorch",
-        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
+        "image": "https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/pytorch/pytorch-original.svg",
         "description": "An open source machine learning framework",
         "learnTime": 0.02
     },
@@ -43,19 +43,19 @@
     },
     {
         "name": "ASP.NET Core",
-        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg",
+        "image": "https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/dotnetcore/dotnetcore-original.svg",
         "description": "A cross-platform, high-performance framework for building modern web apps",
         "learnTime": 0.25
     },
     {
         "name": "Next.js",
-        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+        "image": "https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/nextjs/nextjs-original.svg",
         "description": "The React Framework for Production",
         "learnTime": 0.08
     },
     {
         "name": "Express.js",
-        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+        "image": "https://raw.githubusercontent.com/devicons/devicon/ca28c779441053191ff11710fe24a9e6c23690d6/icons/express/express-original.svg",
         "description": "Fast, unopinionated, minimalist web framework for Node.js",
         "learnTime": 1
     },

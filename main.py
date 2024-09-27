@@ -12,6 +12,9 @@ from server.service.RateLimit import Limiter
 
 app = FastAPI(docs_url=None, dependencies=[Depends(Limiter(rate=100, per=60))])
 
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=[
+                "localhost", "127.0.0.1", "pierrot.io.vn"])
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -19,6 +22,8 @@ app.add_middleware(
     allow_methods=["GET"],
     allow_headers=["*"],
 )
+
+app.add_middleware(HTTPSRedirectMiddleware)
 
 app.mount("/assets", StaticFiles(directory=r"dist/assets",
           html=True), name="assets")
@@ -32,9 +37,9 @@ def read_root():
 @app.get("/{full_path:path}")
 async def serve_react_app(full_path: str):
     try:
-        file_path = os.path.join("dist", full_path)
-        if (os.path.exists(file_path)):
-            return FileResponse(file_path)
+        # file_path = os.path.join("dist", full_path)
+        # if (os.path.exists(file_path)):
+        #     return FileResponse(file_path)
 
         return FileResponse(r"dist/index.html")
     except Exception:
@@ -64,20 +69,3 @@ async def catch_invalid_requests(request: Request, call_next):
         logger.warning(
             f"WARNING: Invalid HTTP request received. Error: {str(e)}")
         return RedirectResponse(url="/error")
-
-if __name__ == "__main__":
-    import uvicorn
-    from pyngrok import ngrok
-
-    public_url = ngrok.connect(8000).public_url
-    print(f"ngrok tunnel \"{public_url}\" -> \"http://127.0.0.1:8000\"")
-
-    app.base_url = public_url
-
-    from urllib.parse import urlparse
-    hostname = urlparse(public_url).hostname
-
-    app.add_middleware(TrustedHostMiddleware, allowed_hosts=[
-                       "localhost", "127.0.0.1", hostname])
-
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)

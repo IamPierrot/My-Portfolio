@@ -27,7 +27,7 @@ const Home = () => {
   const { result: githubInfo, isLoading } = useGithubInfo();
   if (isLoading) return <Loading />;
   return (
-    <>
+    <div className="opacity-85">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -161,7 +161,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

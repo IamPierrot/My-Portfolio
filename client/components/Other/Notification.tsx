@@ -1,5 +1,6 @@
-import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { memo, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 interface NotificationProps {
   open: boolean;
   onClose: () => void;
@@ -8,7 +9,7 @@ interface NotificationProps {
   type?: "success" | "error";
 }
 
-export default function Notification({
+export default memo(function Notification({
   open,
   onClose,
   title,
@@ -20,43 +21,82 @@ export default function Notification({
       ? "bg-green-100 text-green-600"
       : "bg-red-100 text-red-600";
 
+  useEffect(() => {
+    if (open) {
+      const timer = setTimeout(() => {
+        onClose();
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [open, onClose]);
+
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      className="fixed bottom-4 left-4 z-10"
-    >
-      <DialogPanel className="w-full max-w-sm transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all">
-        <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-          <div className="sm:flex sm:items-start">
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 50, scale: 0.9 }}
+          transition={{ duration: 0.3 }}
+          className="absolute bottom-0 right-0 w-80 max-w-sm scale-75 overflow-hidden rounded-lg bg-white shadow-xl"
+        >
+          <div className="flex items-start p-4">
             <div
-              className={`mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full ${iconClasses} sm:mx-0 sm:h-10 sm:w-10`}
+              className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full ${iconClasses}`}
             >
-              <ExclamationTriangleIcon aria-hidden="true" className="h-6 w-6" />
+              {type === "success" ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m9 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              )}
             </div>
-            <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-              <DialogTitle
-                as="h3"
-                className="text-base font-semibold leading-6 text-gray-900"
-              >
+            <div className="ml-4">
+              <h3 className="text-base font-extrabold text-gray-900">
                 {title}
-              </DialogTitle>
-              <div className="mt-2">
+              </h3>
+              <div className="mt-1">
                 <p className="text-sm text-gray-500">{message}</p>
               </div>
             </div>
           </div>
-        </div>
-        <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-          >
-            Close
-          </button>
-        </div>
-      </DialogPanel>
-    </Dialog>
+          <div className="bg-gray-50 px-4 py-3 text-right">
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500"
+            >
+              Close
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
-}
+});

@@ -67,12 +67,12 @@
         "badgeColor": "#ED8B00"
     },
     {
-        "name": "Mojo",
-        "icon": "https://forums.fast.ai/uploads/default/optimized/3X/b/2/b2a6872bebe245dba66865fe4931016cfdc673e5_2_500x500.png",
-        "description": "A new programming language that combines Python's ease of use with C's performance.",
-        "linkToLearn": "https://www.modular.com/mojo",
-        "mainColor": "#FF5A00",
-        "badgeColor": "#000000",
+        "name": "PHP",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg",
+        "description": "A mature language for web development with a large community.",
+        "linkToLearn": "https://www.php.net/docs.php",
+        "mainColor": "#4B8A08",
+        "badgeColor": "#6B7280",
         "main": false
     }
 ]

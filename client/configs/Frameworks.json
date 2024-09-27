@@ -64,5 +64,11 @@
         "image": "https://avatars.githubusercontent.com/u/133400169",
         "description": "Standalone audio sending node based on Lavaplayer",
         "learnTime": 0.25
+    },
+    {
+        "name": "Laravel",
+        "image": "https://github.com/laravel.png",
+        "description": "A PHP framework for web artisans",
+        "learnTime": 0.01
     }
 ]

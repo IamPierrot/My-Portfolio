@@ -24,7 +24,6 @@ const fetchData = async (requestFunc: () => Promise<any>, setResult: Function, s
   }
 };
 
-// Fetch Github Repos
 export const useGithubRepos = () => {
   const octokit = useMemo(() => new Octokit({ auth: author.token, request: { timeout: 10000 } }), [author.token]);
   const [result, setResult] = useState<RespositoryResponse[]>([]);

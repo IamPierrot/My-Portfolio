@@ -13,7 +13,7 @@ from server.service.RateLimit import Limiter
 app = FastAPI(docs_url=None, dependencies=[Depends(Limiter(rate=100, per=60))])
 
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=[
-                "localhost", "127.0.0.1", "pierrot.io.vn"])
+    "localhost", "127.0.0.1", "pierrot.io.vn", "172.18.0.2"])
 
 app.add_middleware(
     CORSMiddleware,

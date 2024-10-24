@@ -14,6 +14,7 @@ WORKDIR /app
 
 COPY ./server/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+RUN pip install "fastapi[standard]"
 
 COPY ./server /app/server
 COPY ./server/main.py /app/main.py

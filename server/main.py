@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.add_middleware(HTTPSRedirectMiddleware)
+# app.add_middleware(HTTPSRedirectMiddleware)
 
 app.mount("/assets", StaticFiles(directory=r"dist/assets",
           html=True), name="assets")

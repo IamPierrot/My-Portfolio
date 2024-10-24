@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:18-alpine AS frontend
 
 WORKDIR /app
 
@@ -18,6 +18,7 @@ RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 COPY ./server /app/server
 COPY ./server/main.py /app/main.py
 COPY ./public /app/public
+COPY --from=frontend ./app/dist /app/dist
 
 EXPOSE 8000
 

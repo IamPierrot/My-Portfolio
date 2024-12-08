@@ -40,15 +40,26 @@ const Projects: React.FC = () => {
 
   const getLanguageColor = useCallback((language: string) => {
     const colors: { [key: string]: string } = {
-      JavaScript: "bg-yellow-600",
-      TypeScript: "bg-blue-600",
-      Python: "bg-green-600",
-      Java: "bg-red-600",
-      CSS: "bg-pink-600",
-      "C#": "bg-purple-600",
-      "C++": "bg-indigo-600",
+      javascript: "bg-yellow-300",
+      typescript: "bg-blue-500",
+      python: "bg-green-500",
+      java: "bg-red-500",
+      css: "bg-blue-300",
+      "c#": "bg-purple-500",
+      "c++": "bg-blue-700",
+      html: "bg-orange-500",
+      ruby: "bg-red-300",
+      php: "bg-violet-500",
+      go: "bg-teal-500",
+      swift: "bg-orange-300",
+      kotlin: "bg-purple-300",
+      rust: "bg-orange-700",
+      dart: "bg-blue-400",
+      shell: "bg-gray-500",
+      dockerfile: "bg-blue-300",
+      makefile: "bg-gray-700",
     };
-    return colors[language] || "bg-gray-600";
+    return colors[language.toLowerCase()] || "bg-gray-600";
   }, []);
 
   if (isLoading) return <BlockLoading />;
